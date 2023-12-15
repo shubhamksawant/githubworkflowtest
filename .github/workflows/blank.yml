@@ -21,8 +21,17 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Check for XML file changes
-        run:  sh check4.sh
-
+        run:  |
+               changed_files=$(git diff --name-only)
+                echo "$changed_files"
+                # Check if there are any .xml files in the changed files
+                if echo "$changed_files" | grep -qE '\.xml$'; then
+                    echo "Skipping the build because .xml files are present in the changes."
+                else
+                    echo "Proceeding with the build."
+                    exit 1
+                    # Add your build steps here
+                fi
         
   # This workflow contains a single job called "build"
   build:
