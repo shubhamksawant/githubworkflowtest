@@ -24,6 +24,7 @@ jobs:
         run:  |
                #! bin/bash
                # changed_files= git show --pretty="" --name-only
+               git fetch --depth=all
                changed_files=$(git diff --name-only HEAD^)
                echo "$changed_files"
                # Check if there are any .xml files in the changed files
