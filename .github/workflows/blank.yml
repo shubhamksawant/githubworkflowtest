@@ -22,8 +22,9 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check for XML file changes
         run:  |
-              #! bin/bash
-                changed_files= git show --pretty="" --name-only
+               #! bin/bash
+               # changed_files= git show --pretty="" --name-only
+               changed_files=$(git diff --name-only HEAD^)
                echo "$changed_files"
                # Check if there are any .xml files in the changed files
                if echo "$changed_files" | grep -qE '\.xml$'; then
