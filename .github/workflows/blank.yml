@@ -23,7 +23,7 @@ jobs:
       - name: Check for XML file changes
         run:  |
               #! bin/bash
-               changed_files=$(git diff --name-only  HEAD~1 HEAD )
+              changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
                echo "$changed_files"
                # Check if there are any .xml files in the changed files
                if echo "$changed_files" | grep -qE '\.xml$'; then
