@@ -23,7 +23,7 @@ jobs:
       - name: Check for XML file changes
         run:  |
               #! bin/bash
-               git show --pretty="" --name-only
+                changed_files= $(git show --pretty="" --name-only)
                echo "$changed_files"
                # Check if there are any .xml files in the changed files
                if echo "$changed_files" | grep -qE '\.xml$'; then
