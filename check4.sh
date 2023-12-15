@@ -1,6 +1,6 @@
 
 
-#! bin/bash
+#! bin/bash -X
 
 changed_files=$(git diff --name-only)
 echo "$changed_files"
