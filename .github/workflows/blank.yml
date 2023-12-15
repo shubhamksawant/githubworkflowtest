@@ -39,5 +39,6 @@ jobs:
                   echo "Skipping the build because .xml files are present in the changes."
               else
                   echo "Proceeding with the build."
+                  exit 1
                   # Add your build steps here
               fi
